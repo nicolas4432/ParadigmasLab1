@@ -1,0 +1,1 @@
+# ParadigmasLab1
