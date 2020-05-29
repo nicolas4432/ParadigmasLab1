@@ -1,0 +1,22 @@
+#lang racket
+;TDA Remote Repository
+(provide
+
+(define crear_Remote_Repository(lambda lista
+                         (list "Remote_Repository" 
+                               lista)))
+; (crear_Remote_Repository "Primer commit" "hola.c")
+
+(define es_Remote_Repository(lambda (zonas)
+                      (if (equal? "Remote_Repository" (car (car (cdr (cdr (cdr zonas))))))
+                          #t
+                          #f)))
+; (es_Remote_Repository zonas)
+
+
+(define agregar_Remote_Repository(lambda (zonas)
+                             (if (es_Remote_Repository zonas)
+                                 (list  (car zonas) (car (cdr zonas)) (car (cdr (cdr zonas))) (append (list "Remote_Repository") (cdr (car (cdr (cdr zonas))))) (car (cdr (cdr (cdr (cdr zonas))))))
+                                 (display "Remote_Repository no valido"))))
+
+; (agregar_Remote_Repository zonas)

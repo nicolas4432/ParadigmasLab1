@@ -1,0 +1,30 @@
+#lang racket
+
+(require "TDA_Workspace.rkt")
+(require "TDA_Index.rkt")
+(require "TDA_Local_Repository.rkt")
+(require "TDA_Remote_Repository.rkt")
+(require "TDA_Comandos.rkt")
+
+
+(define zonas '(("Workspace" ("hola.c" "ss.c" "archi.srt")) ("Index" ("cambio.ts" "ss.c")) ("Local_Repository" ("Primer commit" "hola.c") ("segundo commit" "hola.c" "ss.c")) ("Remote_Repository" ()) ("Comandos"  ("12/25/2020" "Push") ("12/25/2020" "Commit"))))
+;para llegar a la zona de workspace (car zonas)
+;para llegar a "Workpace" (car (car zonas))   (car +
+;para legar a la lista de workspace (car (cdr (car zonas)))  (cdr (car (cdr +
+
+;para llegar a la zona de index (car (cdr zonas))
+;para llegar a "index" (car (car (cdr zonas)))
+;para legar a la lista de index (car (cdr (car (cdr zonas))))
+
+;para llegar a la zona del local repository (car (cdr (cdr zonas)))
+;para llegar a "local_repositori" (car (car (cdr (cdr zonas))))
+;para llegar a la lista de commit de local repositori (cdr (car (cdr (cdr zonas))))
+
+;para llegar a la zona de remote repositori (car (cdr (cdr (cdr zonas))))
+;para llegar a "remoter_repositori" (car (car (cdr (cdr (cdr zonas)))))
+;para llegar a la lista de commit de remote (cdr(car (cdr (cdr (cdr zonas)))))
+
+;para llegar a la zona de comandos (car (cdr (cdr (cdr (cdr zonas)))))
+;para llegar a "caomandos" (car (car (cdr (cdr (cdr (cdr zonas))))))
+;para llegar a lista de comandos comandos (cdr (car (cdr (cdr (cdr (cdr zonas))))))
+                   
