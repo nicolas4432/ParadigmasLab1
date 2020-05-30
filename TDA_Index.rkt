@@ -18,9 +18,11 @@
 ; (es_Index zonas)
 
 
-(define agregar_Index(lambda archivos
+(define agregar_Index(lambda (archivos)
                            (lambda (zonas)
                              (if (es_Index zonas)
                                  (list  (car zonas) (list "Index" (append archivos (car (cdr (car (cdr zonas)))))) (car (cdr (cdr zonas))) (car (cdr (cdr (cdr zonas)))) (car (cdr (cdr (cdr (cdr zonas))))))
                                  (display "Index no valido")))))
+
+
 ; ((agregar_Index "nuevo.c" "otro.c")zonas)

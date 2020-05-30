@@ -22,3 +22,27 @@
                           (lambda (variable3)
                             ((comando variable1 variable3)variable2)))
                         #f)))))
+
+;((git push)zonas)
+(define push(lambda (zonas)
+              (if (es_Directorio zonas)
+                  (agregar_Remote_Repository zonas)
+                  (display "Comando no valido"))))
+
+;((agregar_Index "nuevo.c" "otro.c")zonas)
+
+(define add(lambda (lista_archivos_nuevos)
+             (lambda (zonas)
+               (if (es_Directorio zonas)
+                  ((agregar_Index lista_archivos_nuevos) zonas)
+                  (display "Comando no valido")))))
+
+;((add (list "hola.c" "nuevo.c" "racket.rkt"))zonas)
+
+
+              
+
+
+
+
+
