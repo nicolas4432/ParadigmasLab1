@@ -1,1 +1,1 @@
-("7.7" racket ("b3cd279cb0bd27207d3a97f1c39979093a2ba39e" . "527c06e5a72613aa8a5db9ac6fa5f98bf5d19c05") #"C:\\Users\\nico4\\Downloads\\Universidad\\Paradigmas de Programacion\\Lab 1\\ParadigmasLab1\\TDA_Index.rkt" (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))
+("7.7" racket ("499f47cb9a7d6855ff05b03de8712452bf45dd67" . "36317a336e320df11cf0dfe8348997ed82188847") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))

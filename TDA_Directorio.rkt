@@ -1,42 +1,26 @@
 #lang racket
-
+;TDA Directorio
 (require "TDA_Workspace.rkt")
 (require "TDA_Index.rkt")
 (require "TDA_Local_Repository.rkt")
 (require "TDA_Remote_Repository.rkt")
 (require "TDA_Comandos.rkt")
-(provide crear_Directorio es_Directorio)
+(provide crear_Directorio es_Directorio comparar_contenido)
 
-
-(define zonas '(("Workspace" ("hola.c" "ss.c" "archi.srt")) ("Index" ("cambio.ts" "ss.c")) ("Local_Repository" ("Primer commit" "hola.c") ("segundo commit" "hola.c" "ss.c")) ("Remote_Repository" ()) ("Comandos"  ("12/25/2020" "Push") ("12/25/2020" "Commit"))))
-;para llegar a la zona de workspace (car zonas)
-;para llegar a "Workpace" (car (car zonas))   (car +
-;para legar a la lista de workspace (car (cdr (car zonas)))  (cdr (car (cdr +
-
-;para llegar a la zona de index (car (cdr zonas))
-;para llegar a "index" (car (car (cdr zonas)))
-;para legar a la lista de index (car (cdr (car (cdr zonas))))
-
-;para llegar a la zona del local repository (car (cdr (cdr zonas)))
-;para llegar a "local_repositori" (car (car (cdr (cdr zonas))))
-;para llegar a la lista de commit de local repositori (cdr (car (cdr (cdr zonas))))
-
-;para llegar a la zona de remote repositori (car (cdr (cdr (cdr zonas))))
-;para llegar a "remoter_repositori" (car (car (cdr (cdr (cdr zonas)))))
-;para llegar a la lista de commit de remote (cdr(car (cdr (cdr (cdr zonas)))))
-
-;para llegar a la zona de comandos (car (cdr (cdr (cdr (cdr zonas)))))
-;para llegar a "caomandos" (car (car (cdr (cdr (cdr (cdr zonas))))))
-;para llegar a lista de comandos comandos (cdr (car (cdr (cdr (cdr (cdr zonas))))))
-
-
-
-(define crear_Directorio( list (crear_Workspace) (crear_Index) (crear_Local_Repository) (crear_Remote_Repository) (crear_Comandos)))
-
-;(crear_Directorio)
-
+;FUNCION DE CONSTRUCCION
+;Desc: Si el directorio ingresado no es valido crea un nuevo direcotorio
+;Dom: Lista
+;Rec: Lista 
+(define crear_Directorio(lambda (zonas)
+                          (if (es_Directorio zonas)
+                              (display "Directorio bien implementado")
+                              ( list (crear_Workspace) (crear_Index) (crear_Local_Repository) (crear_Remote_Repository) (crear_Comandos)))))
+;FUNCION DE PERTENENCIA
+;Desc: Entra un direcotirio y me devuelve un booleano si esta bien implementado
+;Dom: Lista
+;Rec: Booleano
 (define es_Directorio(lambda (zonas)
-                       (if (list? zonas)
+                       (if (and (list? zonas) (not (null? zonas)))
                            (if (es_Workspace zonas)
                                (if (es_Index zonas)
                                    (if (es_Local_Repository zonas)
@@ -49,8 +33,32 @@
                                    #f)
                                #f)
                            #f)))
-; (es_Directorio zonas)
+;FUNCION DE SELECTOR
+;Desc: Entran 2 listas donde me retornara 1 con todos los archivos de ambas listas sin repetirse
+;Dom: Lista X Lista
+;Rec: Lista
+;T. rec: Cola
+(define comparar_contenido(lambda (lista1 lista2)
+                            (if (null? lista2)
+                                (append lista1 lista2)
+                                (if (ormap (lambda (x) (equal? (car lista2) x))
+                                           lista1)
+                                    (comparar_contenido lista1 (cdr lista2))
+                                    (comparar_contenido (append lista1 (list (car lista2))) (cdr lista2))))))
 
+;EJEMPLOS
+
+;(crear_Directorio '())
+;(crear_Directorio 3)
+;(crear_Directorio '(("Workspace" ()) ("Index" ()) ("Local_Repository" ()) ("Remote_Repository" ()) ("Comandos" ())))
+
+;(es_Directorio '(("Workspace" ()) ("Index" ()) ("Local_Repository" ()) ("Remote_Repository" ()) ("Comandos" ())))
+;(es_Directorio 3)
+;(es_Directorio '())
+
+;(comparar_contenido '("HOLA" "2" "5") '("HOLA" "2" "5"))
+;(comparar_contenido '("HOLA" "2" "5") '("HOLA" "2" "5" "3"))
+;(comparar_contenido '("HOLA" "2" "5" "7") '("HOLA" "2" "5" "3"))
 
 
                    
